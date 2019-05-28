@@ -27,7 +27,7 @@ end
 map '/load' do
   headers = proc do |env|
     1000.times do |i|
-      10000.downto(1) do |j|
+      30000.downto(1) do |j|
         Math.sqrt(j) * i / 0.2
       end
     end
