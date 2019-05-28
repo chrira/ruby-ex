@@ -24,6 +24,18 @@ map '/headers' do
   run headers
 end
 
+map '/load' do
+  headers = proc do |env|
+    1000.times do |i|
+      10000.downto(1) do |j|
+        Math.sqrt(j) * i / 0.2
+      end
+    end
+    [200, { "Content-Type" => "text/plain" }, ["Extensive task done" ]]
+  end
+  run headers
+end
+
 map '/' do
   welcome = proc do |env|
     [200, { "Content-Type" => "text/html" }, [<<WELCOME_CONTENTS
